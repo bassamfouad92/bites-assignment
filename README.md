@@ -22,7 +22,8 @@ To run the integration test locally, follow these steps:
   --driver=test_driver/integration_test.dart \
   --target=integration_test/home_screen_test.dart
 
-**Screenshot**: The `![Screenshot](screenshot/coverage_screen_shot.png)` 
+**Screenshot**:  
+![Coverage](screenshot/coverage_screen_shot.png)
 
 ## Architecture
 
