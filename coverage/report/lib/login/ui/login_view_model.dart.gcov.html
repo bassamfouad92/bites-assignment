@@ -31,13 +31,13 @@
             <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntryMed">83.3&nbsp;%</td>
-            <td class="headerCovTableEntry">18</td>
-            <td class="headerCovTableEntry">15</td>
+            <td class="headerCovTableEntryMed">78.6&nbsp;%</td>
+            <td class="headerCovTableEntry">14</td>
+            <td class="headerCovTableEntry">11</td>
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2024-06-10 14:28:02</td>
+            <td class="headerValue">2024-06-11 19:21:31</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">-</td>
@@ -67,41 +67,38 @@
 <span id="L5"><span class="lineNum">       5</span>              : </span>
 <span id="L6"><span class="lineNum">       6</span>              : class LoginViewModel extends StateNotifier&lt;LoginState&gt; {</span>
 <span id="L7"><span class="lineNum">       7</span>              :   final UseCase useCase;</span>
-<span id="L8"><span class="lineNum">       8</span>              :   String? email;</span>
-<span id="L9"><span class="lineNum">       9</span>              :   String? password;</span>
+<span id="L8"><span class="lineNum">       8</span>              : </span>
+<span id="L9"><span class="lineNum">       9</span> <span class="tlaGNC tlaBgGNC">           2 :   LoginViewModel(this.useCase) : super(const LoginState.initial());</span></span>
 <span id="L10"><span class="lineNum">      10</span>              : </span>
-<span id="L11"><span class="lineNum">      11</span> <span class="tlaGNC tlaBgGNC">           2 :   LoginViewModel(this.useCase) : super(const LoginState.initial());</span></span>
-<span id="L12"><span class="lineNum">      12</span>              : </span>
-<span id="L13"><span class="lineNum">      13</span> <span class="tlaGNC">           1 :   void inputEmail(String email) {</span></span>
-<span id="L14"><span class="lineNum">      14</span> <span class="tlaGNC">           1 :     this.email = email;</span></span>
-<span id="L15"><span class="lineNum">      15</span> <span class="tlaGNC">           3 :     state = state.copyWith(</span></span>
-<span id="L16"><span class="lineNum">      16</span> <span class="tlaGNC">           1 :       email: this.email,</span></span>
-<span id="L17"><span class="lineNum">      17</span> <span class="tlaGNC">           4 :       canSubmit: email.isNotEmpty &amp;&amp; state.password.isNotEmpty,</span></span>
-<span id="L18"><span class="lineNum">      18</span>              :     );</span>
-<span id="L19"><span class="lineNum">      19</span>              :   }</span>
-<span id="L20"><span class="lineNum">      20</span>              : </span>
-<span id="L21"><span class="lineNum">      21</span> <span class="tlaGNC">           1 :   void inputPassword(String password) {</span></span>
-<span id="L22"><span class="lineNum">      22</span> <span class="tlaGNC">           1 :     this.password = password;</span></span>
-<span id="L23"><span class="lineNum">      23</span> <span class="tlaGNC">           3 :     state = state.copyWith(</span></span>
-<span id="L24"><span class="lineNum">      24</span> <span class="tlaGNC">           1 :       password: this.password,</span></span>
-<span id="L25"><span class="lineNum">      25</span> <span class="tlaGNC">           4 :       canSubmit: state.email.isNotEmpty &amp;&amp; password.isNotEmpty,</span></span>
-<span id="L26"><span class="lineNum">      26</span>              :     );</span>
-<span id="L27"><span class="lineNum">      27</span>              :   }</span>
-<span id="L28"><span class="lineNum">      28</span>              : </span>
-<span id="L29"><span class="lineNum">      29</span> <span class="tlaGNC">           1 :   Future&lt;LoginState&gt; loginUser() async {</span></span>
-<span id="L30"><span class="lineNum">      30</span>              :     try {</span>
-<span id="L31"><span class="lineNum">      31</span> <span class="tlaGNC">           5 :       final isSuccess = await useCase.execute(LoginRequest(email!, password!));</span></span>
-<span id="L32"><span class="lineNum">      32</span>              :       if (isSuccess) {</span>
-<span id="L33"><span class="lineNum">      33</span> <span class="tlaGNC">           3 :         state = state.copyWith(state: LoginConcreteState.loaded);</span></span>
-<span id="L34"><span class="lineNum">      34</span> <span class="tlaGNC">           1 :         return state;</span></span>
-<span id="L35"><span class="lineNum">      35</span>              :       }</span>
-<span id="L36"><span class="lineNum">      36</span>              :     } catch (ex) {</span>
-<span id="L37"><span class="lineNum">      37</span> <span class="tlaUNC tlaBgUNC">           0 :       state = state.copyWith(state: LoginConcreteState.failure);</span></span>
-<span id="L38"><span class="lineNum">      38</span> <span class="tlaUNC">           0 :       return state;</span></span>
-<span id="L39"><span class="lineNum">      39</span>              :     }</span>
-<span id="L40"><span class="lineNum">      40</span> <span class="tlaUNC">           0 :     return state;</span></span>
-<span id="L41"><span class="lineNum">      41</span>              :   }</span>
-<span id="L42"><span class="lineNum">      42</span>              : }</span>
+<span id="L11"><span class="lineNum">      11</span> <span class="tlaGNC">           1 :   void inputEmail(String email) {</span></span>
+<span id="L12"><span class="lineNum">      12</span> <span class="tlaGNC">           3 :     state = state.copyWith(</span></span>
+<span id="L13"><span class="lineNum">      13</span>              :       email: email,</span>
+<span id="L14"><span class="lineNum">      14</span> <span class="tlaGNC">           4 :       canSubmit: email.isNotEmpty &amp;&amp; state.password.isNotEmpty,</span></span>
+<span id="L15"><span class="lineNum">      15</span>              :     );</span>
+<span id="L16"><span class="lineNum">      16</span>              :   }</span>
+<span id="L17"><span class="lineNum">      17</span>              : </span>
+<span id="L18"><span class="lineNum">      18</span> <span class="tlaGNC">           1 :   void inputPassword(String password) {</span></span>
+<span id="L19"><span class="lineNum">      19</span> <span class="tlaGNC">           3 :     state = state.copyWith(</span></span>
+<span id="L20"><span class="lineNum">      20</span>              :       password: password,</span>
+<span id="L21"><span class="lineNum">      21</span> <span class="tlaGNC">           4 :       canSubmit: state.email.isNotEmpty &amp;&amp; password.isNotEmpty,</span></span>
+<span id="L22"><span class="lineNum">      22</span>              :     );</span>
+<span id="L23"><span class="lineNum">      23</span>              :   }</span>
+<span id="L24"><span class="lineNum">      24</span>              : </span>
+<span id="L25"><span class="lineNum">      25</span> <span class="tlaGNC">           1 :   Future&lt;LoginState&gt; loginUser() async {</span></span>
+<span id="L26"><span class="lineNum">      26</span>              :     try {</span>
+<span id="L27"><span class="lineNum">      27</span>              :       final isSuccess =</span>
+<span id="L28"><span class="lineNum">      28</span> <span class="tlaGNC">           7 :           await useCase.execute(LoginRequest(state.email, state.password));</span></span>
+<span id="L29"><span class="lineNum">      29</span>              :       if (isSuccess) {</span>
+<span id="L30"><span class="lineNum">      30</span> <span class="tlaGNC">           3 :         state = state.copyWith(state: LoginConcreteState.loaded);</span></span>
+<span id="L31"><span class="lineNum">      31</span> <span class="tlaGNC">           1 :         return state;</span></span>
+<span id="L32"><span class="lineNum">      32</span>              :       }</span>
+<span id="L33"><span class="lineNum">      33</span>              :     } catch (ex) {</span>
+<span id="L34"><span class="lineNum">      34</span> <span class="tlaUNC tlaBgUNC">           0 :       state = state.copyWith(state: LoginConcreteState.failure);</span></span>
+<span id="L35"><span class="lineNum">      35</span> <span class="tlaUNC">           0 :       return state;</span></span>
+<span id="L36"><span class="lineNum">      36</span>              :     }</span>
+<span id="L37"><span class="lineNum">      37</span> <span class="tlaUNC">           0 :     return state;</span></span>
+<span id="L38"><span class="lineNum">      38</span>              :   }</span>
+<span id="L39"><span class="lineNum">      39</span>              : }</span>
         </pre>
               </td>
             </tr>

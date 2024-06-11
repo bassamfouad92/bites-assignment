@@ -8,10 +8,9 @@ class LoginUsecase extends UseCase<bool, LoginRequest> {
   LoginUsecase(this._authRepository);
 
   @override
-  Future<bool> execute(LoginRequest params) async {
+  Future<bool> execute(LoginRequest loginRequest) async {
     try {
-      return _authRepository.login(
-          params.email.trim().toString(), params.password.trim().toString());
+      return _authRepository.login(loginRequest.params());
     } catch (ex) {
       rethrow;
     }

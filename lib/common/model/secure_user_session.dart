@@ -36,6 +36,7 @@ class SecureUserSession implements UserSession {
   @override
   Future<bool> isUserLoggedIn() async {
     final token = await getToken();
+    print("Token: ${token}");
     return token != null;
   }
 }

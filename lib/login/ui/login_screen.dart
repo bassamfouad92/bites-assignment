@@ -189,6 +189,9 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
         child: MaterialButton(
           key: const Key('signInSaveButton'),
           onPressed: () async {
+            if (!state.canSubmit) {
+              return;
+            }
             EasyLoading.show(
                 status: 'Loading..',
                 maskType: EasyLoadingMaskType.black,

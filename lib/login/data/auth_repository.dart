@@ -6,7 +6,7 @@ import 'package:bites_assignment/login/data/auth_response.dart';
 import '../../common/network/http/network_service.dart';
 
 abstract interface class AuthRepository {
-  Future<bool> login(String email, String password);
+  Future<bool> login(Map<String, dynamic> params);
 }
 
 class AuthRepositoryImpl implements AuthRepository {
@@ -16,14 +16,10 @@ class AuthRepositoryImpl implements AuthRepository {
   AuthRepositoryImpl(this._networkService, this._userSession);
 
   @override
-  Future<bool> login(String email, String password) async {
-    final response = await _networkService.post(
-      '/login', // Endpoint for the login API
-      data: {
-        'username': email,
-        'password': password,
-      },
-    );
+  Future<bool> login(Map<String, dynamic> params) async {
+    final response =
+        await _networkService.post('/login', // Endpoint for the login API
+            data: params);
     try {
       final status = response.statusCode as int;
       if (status.toApiStatus() == ApiStatus.success) {
